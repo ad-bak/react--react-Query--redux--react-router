@@ -1,5 +1,12 @@
+import { Outlet } from "react-router-dom";
+
 const HomeLayout = () => (
-  <h1 className="text-3xl font-bold underline">HomeLayout</h1>
+  <>
+    <nav>
+      <span className="text-4xl text-primary">Comfy</span>
+    </nav>
+    <Outlet />
+  </>
 );
 
 export default HomeLayout;

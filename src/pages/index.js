@@ -5,7 +5,7 @@ export { default as Products } from "./Products";
 export { default as Error } from "./Error";
 export { default as HomeLayout } from "./HomeLayout";
 export { default as Register } from "./Register";
-export { default as Order } from "./Order";
+export { default as Orders } from "./Orders";
 export { default as Landing } from "./Landing";
 export { default as SingleProduct } from "./SignleProduct";
 export { default as Login } from "./Login";
