@@ -1,3 +1,11 @@
-const Landing = () => <h1 className="text-3xl font-bold underline">Landing</h1>;
+import { Hero } from "../components";
+
+const Landing = () => {
+  return (
+    <>
+      <Hero />
+    </>
+  );
+};
 
 export default Landing;
