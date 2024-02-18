@@ -6,6 +6,6 @@ export default {
   },
   plugins: [require("@tailwindcss/typography"), require("daisyui")],
   daisyui: {
-    themes: ["dracula"],
+    themes: ["retro", "dracula"],
   },
 };

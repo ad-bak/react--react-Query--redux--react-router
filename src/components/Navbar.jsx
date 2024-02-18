@@ -1,8 +1,34 @@
 import { NavLink } from "react-router-dom";
 import { FaBarsStaggered } from "react-icons/fa6";
-import { BsCart3, BsMoonFill, BsSunFill } from "react-icons/bs";
+import { BsCart3, BsMoonFill, BsSun, BsSunFill } from "react-icons/bs";
+import NavLinks from "./NavLinks";
+import { useEffect, useState } from "react";
+
+const themes = {
+  winter: "winter",
+  dracula: "dracula",
+};
+
+const getThemeFromLocalStorage = () => {
+  return localStorage.getItem("theme") || themes.winter;
+};
 
 const Navbar = () => {
+  const [theme, setTheme] = useState(getThemeFromLocalStorage);
+
+  const handleTheme = () => {
+    const { winter, dracula } = themes;
+    const newTheme = theme === winter ? dracula : winter;
+    setTheme(newTheme);
+  };
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const isDarkTheme = theme === themes.dracula;
+
   return (
     <nav className="bg-base-200">
       <div className="navbar align-element">
@@ -19,19 +45,32 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200"
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-52"
             >
-              nav links
+              <NavLinks />
             </ul>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal">nav links</ul>
+          <ul className="menu menu-horizontal">
+            <NavLinks />
+          </ul>
         </div>
         <div className="navbar-end">
           {/* THEME */}
+          <label className="swap swap-rotate">
+            <input
+              type="checkbox"
+              onChange={handleTheme}
+              defaultChecked={isDarkTheme}
+            />
+            <BsSunFill className="swap-on w-6 h-6" />
+            <BsMoonFill className="swap-off w-6 h-6" />
+          </label>
+          {/* CART */}
           <NavLink to="/theme" className="btn btn-ghost btn-circle btn-md ml-4">
             <div className="indicator">
+              ` `
               <BsCart3 className="w-6 h-6" />
               <span className="badge badgesm badge-primary indicator-item">
                 8
