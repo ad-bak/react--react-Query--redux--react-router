@@ -70,7 +70,6 @@ const Navbar = () => {
           {/* CART */}
           <NavLink to="/theme" className="btn btn-ghost btn-circle btn-md ml-4">
             <div className="indicator">
-              ` `
               <BsCart3 className="w-6 h-6" />
               <span className="badge badgesm badge-primary indicator-item">
                 8
