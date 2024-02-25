@@ -6,3 +6,6 @@ export { default as Hero } from "./Hero";
 export { default as ErrorElement } from "./Error";
 export { default as FeaturedProducts } from "./FeatureProducts";
 export { default as SectionTitle } from "./SectionTitle";
+export { default as Filters } from "./Filters";
+export { default as ProductsContainer } from "./ProductsContainer";
+export { default as PaginationContainer } from "./PaginationContainer";
