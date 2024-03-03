@@ -2,35 +2,19 @@ import { NavLink } from "react-router-dom";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { BsCart3, BsMoonFill, BsSunFill } from "react-icons/bs";
 import NavLinks from "./NavLinks";
-import { useEffect, useState } from "react";
+
 import { useSelector } from "react-redux";
-
-const themes = {
-  winter: "winter",
-  dracula: "dracula",
-};
-
-const getThemeFromLocalStorage = () => {
-  return localStorage.getItem("theme") || themes.winter;
-};
+import { useDispatch } from "react-redux";
+import { toggleTheme } from "../features/user/userSlice";
 
 const Navbar = () => {
-  const [theme, setTheme] = useState(getThemeFromLocalStorage);
+  const dispatch = useDispatch();
 
   const handleTheme = () => {
-    const { winter, dracula } = themes;
-    const newTheme = theme === winter ? dracula : winter;
-    setTheme(newTheme);
+    dispatch(toggleTheme());
   };
 
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
-  }, [theme]);
-
   const numItemsInCart = useSelector((state) => state.cart.numItemsInCart) || 0;
-
-  const isDarkTheme = theme === themes.winter;
 
   return (
     <nav className="bg-base-200">
@@ -62,11 +46,7 @@ const Navbar = () => {
         <div className="navbar-end">
           {/* THEME */}
           <label className="swap swap-rotate">
-            <input
-              type="checkbox"
-              onChange={handleTheme}
-              defaultChecked={isDarkTheme}
-            />
+            <input type="checkbox" onChange={handleTheme} />
             <BsSunFill className="swap-on w-6 h-6" />
             <BsMoonFill className="swap-off w-6 h-6" />
           </label>
