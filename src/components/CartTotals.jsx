@@ -3,7 +3,7 @@ import { formatPrice } from "../utils/index";
 
 const CartTotals = () => {
   const { cartTotal, shipping, tax, orderTotal } = useSelector(
-    (state) => state.cart
+    (state) => state.cartState
   );
   return (
     <div className="card bg-base-200">

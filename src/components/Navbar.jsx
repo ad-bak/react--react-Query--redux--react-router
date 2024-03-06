@@ -14,7 +14,8 @@ const Navbar = () => {
     dispatch(toggleTheme());
   };
 
-  const numItemsInCart = useSelector((state) => state.cart.numItemsInCart) || 0;
+  const numItemsInCart =
+    useSelector((state) => state.cartState.numItemsInCart) || 0;
 
   return (
     <nav className="bg-base-200">
@@ -51,7 +52,7 @@ const Navbar = () => {
             <BsMoonFill className="swap-off w-6 h-6" />
           </label>
           {/* CART */}
-          <NavLink to="/theme" className="btn btn-ghost btn-circle btn-md ml-4">
+          <NavLink to="/cart" className="btn btn-ghost btn-circle btn-md ml-4">
             <div className="indicator">
               <BsCart3 className="w-6 h-6" />
               <span className="badge badgesm badge-primary indicator-item">
